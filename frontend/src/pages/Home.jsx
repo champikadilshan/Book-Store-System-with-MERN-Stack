@@ -7,6 +7,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import BookTable from "../components/Home/BookTable";
 import BookCard from "../components/Home/BookCard";
+import NavBar from "../components/Home/NavBar";
 
 function Home() {
   const [books, setBooks] = useState([]);
@@ -29,15 +30,21 @@ function Home() {
 
   return (
     <div className="p-4 min-h-screen p-6 bg-slate-900">
-      <div className="flex justify-center items-center gap-x-4">
+
+      {/* Nav bar */}
+      <NavBar />
+
+      {/* Buttons */}
+
+      <div className="flex justify-center items-center gap-x-4 p-8">
         <button
-          className="bg-sky-800 hover:bg-sky-400 px-4 py-1 rounded-lg font-normal text-slate-300"
+          className="bg-indigo-800 hover:bg-indigo-400 px-4 py-1 rounded-lg font-normal text-slate-300"
           onClick={() => setShowType("table")}
         >
           Table
         </button>
         <button
-          className="bg-sky-800 hover:bg-sky-400 px-4 py-1 rounded-lg font-normal text-slate-300"
+          className="bg-indigo-800 hover:bg-indigo-400 px-4 py-1 rounded-lg font-normal text-slate-300"
           onClick={() => setShowType("card")}
         >
           Card
@@ -46,9 +53,7 @@ function Home() {
 
       <div className="flex justify-between items-center">
         <h1 className="text-3xl my-8 text-slate-300">Books List</h1>
-        <Link to="/books/create">
-          <MdOutlineAddBox className="text-slate-300 text-4xl" />
-        </Link>
+        
       </div>
       {loading ? (
         <Spinner />
@@ -57,6 +62,9 @@ function Home() {
       ) : (
         <BookCard books={books} />
       )}
+      <Link to="/books/create">
+          <MdOutlineAddBox className="text-slate-300 text-4xl my-4 " />
+      </Link>
     </div>
   );
 }
